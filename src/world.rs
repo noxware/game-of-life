@@ -6,6 +6,10 @@ pub struct World {
 }
 
 impl World {
+    pub fn new(alive_coords: HashSet<(i64, i64)>) -> World {
+        World { alive_coords }
+    }
+
     pub fn get_by_xy(&self, x: i64, y: i64) -> Cell {
         let is_alive = self.alive_coords.contains(&(x, y));
         Cell::new(x, y, is_alive)
@@ -15,7 +19,7 @@ impl World {
         self.get_by_xy(cell.x + x, cell.y + y)
     }
 
-    fn get_alive_cells(&self) -> Vec<Cell> {
+    pub fn get_alive_cells(&self) -> Vec<Cell> {
         self.alive_coords
             .iter()
             .map(|(x, y)| Cell::new(*x, *y, true))
