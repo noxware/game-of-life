@@ -1,6 +1,5 @@
-use game_of_life::{cell::Cell, world::World};
+use game_of_life::{cell::Cell, pattern, world::World};
 use macroquad::prelude::*;
-use std::collections::HashSet;
 
 const SQUARES: i16 = 64;
 
@@ -62,13 +61,17 @@ fn draw(state: &mut State) {
     }
 }
 
+fn init_state() -> State {
+    State {
+        world: World::parse(pattern::default),
+        speed: 0.05,
+        last_update: get_time(),
+    }
+}
+
 #[macroquad::main("Game of Life")]
 async fn main() {
-    let mut state = State {
-        world: World::new(HashSet::from([(5, 4), (5, 5), (5, 6)])),
-        speed: 0.3,
-        last_update: get_time(),
-    };
+    let mut state = init_state();
 
     loop {
         update(&mut state);

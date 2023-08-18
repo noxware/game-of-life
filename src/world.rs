@@ -78,4 +78,27 @@ impl World {
 
         World { alive_coords }
     }
+
+    /// Parse a world represented as a string of alive cells.
+    ///
+    /// Altough it doesn't adhere strictly to a specific format, is case insensitive, and
+    /// recognizes a custom set of characters, it should be mostly compatible with `Life 1.05`
+    /// and `Plaintext` as defined in https://conwaylife.com/wiki/File_formats.
+    pub fn parse(input: &str) -> World {
+        let mut alive_coords = HashSet::new();
+
+        for (y, line) in input.to_lowercase().lines().enumerate() {
+            if line.starts_with("!") || line.starts_with("#") {
+                continue;
+            }
+
+            for (x, c) in line.chars().enumerate() {
+                if c == 'o' || c == '*' || c == 'x' {
+                    alive_coords.insert((x as i64, y as i64));
+                }
+            }
+        }
+
+        World { alive_coords }
+    }
 }
