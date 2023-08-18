@@ -10,8 +10,10 @@ struct State {
 }
 
 fn update(state: &mut State) {
-    if get_time() - state.last_update > state.speed {
-        state.last_update = get_time();
+    let current_time = get_time();
+
+    if current_time - state.last_update > state.speed {
+        state.last_update = current_time;
         state.world = state.world.next();
     }
 }
