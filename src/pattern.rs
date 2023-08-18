@@ -1,4 +1,4 @@
-pub const default: &'static str = "!Name: 7-engine Cordership
+pub const DEFAULT: &'static str = "!Name: 7-engine Cordership
 !Author: Dean Hickerson
 !A diagonal Cordership that uses 7 switch engines, found on August 23, 1993.
 !www.conwaylife.com/wiki/index.php?title=7-engine_Cordership

@@ -63,7 +63,7 @@ fn draw(state: &mut State) {
 
 fn init_state() -> State {
     State {
-        world: World::parse(pattern::default),
+        world: World::parse(pattern::DEFAULT),
         speed: 0.05,
         last_update: get_time(),
     }
