@@ -50,10 +50,8 @@ fn draw(state: &mut State) {
             y as f32 * sq_size,
             sq_size,
             sq_size,
-            RED,
+            PINK,
         );
-
-        // draw_text(format!("GEN: {gen}").as_str(), 10., 20., 20., DARKGRAY);
     }
 }
 
